@@ -1,0 +1,11 @@
+Criando o arquivo m4!
+O commit foi o terceiro.
+Testando:
+    git stash
+    git stash list
+    git stash pop stash@{0}
+    git stash push -m "Uma mensagem"
+    git stash apply stash@{0}
+    git stash drop stash@{0}
+    git stash drop
+    git stash clean

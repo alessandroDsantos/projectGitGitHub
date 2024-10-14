@@ -95,3 +95,8 @@ git pull -> É usado para buscar e integrar (merge) as mudanças do repositório
 
 git push -> É usado para enviar commits locais de uma branch para o repositório remoto. Ele atualiza o repositório remoto com as mudanças feitas no repositório local.
 
+git diff -> É usado para mostrar as diferenças entre commits, branches e o estado do diretório de trabalho. É uma ferramenta poderosa para revisar as mudanças feitas no código.
+
+		git diff --staged -> Mostra as mudanças que foram adicionadas à área de staging e estão prontas para serem commitadas.
+
+		git diff branch1 branch2 -> Compara as diferenças entre duas branches específicas.

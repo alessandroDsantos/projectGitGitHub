@@ -1,0 +1,97 @@
+git config --list -> É usado para listar todas as configurações do Git que estão ativas no seu ambiente. Ele exibe as configurações globais, locais e do sistema em um formato de chave-valor, permitindo que você veja facilmente como o Git está configurado no momento.
+
+git config --global user.name "nome" e git config --global user.email "email" -> São usados para configurar o nome de usuário e o email que serão associados a todos os commits feitos no seu sistema. Essa configuração é global, ou seja, se aplica a todos os repositórios Git no seu sistema.
+
+git init -> É usado para criar um novo repositório Git vazio ou re-inicializar um existente no diretório atual. Ele cria uma nova subpasta chamada .git que contém todos os arquivos de configuração e dados do repositório.
+
+git --version -> É utilizado para verificar a versão instalada do Git no seu sistema. Quando você executa este comando, o Git retorna o número da versão atual, o que é útil para confirmar que você tem a versão correta instalada ou para verificar se precisa de uma atualização.
+
+git branch -> É usado para listar, criar ou deletar branches no repositório Git.
+
+	git branch -m -> É utilizado para renomear a branch atual ou uma branch especificada.
+	
+	git branch -d -> É usado para deletar uma branch no Git.
+
+	git branch -a -> É usado para listar todas as branches no repositório Git, tanto locais quanto remotas.
+
+	git branch -r -> É usado para listar todas as branches remotas do seu repositório Git.
+
+	git branch -vv -> Exibe uma lista detalhada de todas as branches locais no seu repositório, incluindo informações 	extras como o commit mais recente e o status de rastreamento em relação às branches remotas.
+	
+
+git status -> É essencial para verificar o estado do seu repositório Git. Ele mostra quais alterações foram feitas, quais arquivos estão prontos para serem commitados, quais não estão e quais não estão sendo rastreados.
+
+git add nome_do_arquivo/--all/. -> É usado para adicionar mudanças no diretório de trabalho ao staging area do Git. Em outras palavras, ele prepara arquivos para serem commitados, mas não realiza o commit em si.
+
+git log -> Mostra o histórico de commits do seu repositório Git. Ele lista todos os commits realizados, exibindo detalhes como o autor, data e a mensagem do commit. É uma ferramenta poderosa para revisar e entender as mudanças feitas no projeto.
+
+git log --oneline -> fornece uma visualização compacta do histórico de commits. Cada commit é exibido em uma única linha, mostrando um hash abreviado e a mensagem do commit. É útil para obter uma visão rápida e concisa do histórico.
+
+git clean -df -> É usado para remover arquivos e diretórios não rastreados do seu diretório de trabalho no Git. Aqui está uma explicação detalhada:
+	-d: Incluir diretórios. Sem essa flag, apenas arquivos não rastreados serão removidos.
+	-f: Forçar a remoção. Necessário porque o comando git clean é seguro por padrão e não remove nada sem essa flag.
+
+
+git restore --staged <file> -> É usado para remover um arquivo da área de staging (área de preparação) sem descartar as alterações feitas no diretório de trabalho. Isso significa que o arquivo será removido da lista de arquivos que serão commitados, mas as mudanças no arquivo ainda estarão presentes no seu sistema de arquivos.
+
+git rm --cached <file> -> Remove arquivos do índice (staging area) do Git sem deletá-los do seu sistema de arquivos. É útil para parar de rastrear arquivos que já foram adicionados ao repositório, sem realmente excluí-los do disco.
+
+git ls-files -> É usado para listar todos os arquivos no índice do repositório Git, também conhecido como staging area. Este comando é útil para ver quais arquivos estão sendo rastreados pelo Git e quais estão prontos para serem commitados.
+
+git ls-remote -> É usado para listar todas as referências (branches, tags, etc.) em um repositório remoto. Ele fornece uma visão abrangente das referências remotas sem a necessidade de clonar ou buscar o repositório.
+
+git reset --soft HEAD~n(1,2,3...quandos commits anteriores tiverem) -> É usado para desfazer o último commit, movendo o ponteiro HEAD e a branch atual para o commit anterior, mas deixando as mudanças feitas no último commit na área de staging.
+
+git reset --mixed HEAD~1 ou git reset HEAD~n(1,2,3...quandos commits anteriores tiverem) -> É usado para desfazer o último commit, movendo o ponteiro HEAD e a branch atual para o commit anterior. Diferente do --soft, ele mantém as mudanças feitas no commit desfeito no seu diretório de trabalho, mas remove-as da área de staging.
+
+git reset --hard HEAD~n(1,2,3...quandos commits anteriores tiverem) -> É usado para desfazer o último commit, movendo o ponteiro HEAD e a branch atual para o commit anterior, removendo todas as mudanças no diretório de trabalho e na área de staging.
+
+git stash ->  É uma ferramenta útil no Git que permite salvar temporariamente as mudanças não commitadas no seu diretório de trabalho, limpando-o sem perder essas mudanças. É como colocar as mudanças em um armazenamento temporário para que você possa voltar a elas mais tarde.
+
+	git stash list -> É usado para listar todas as entradas no stash do Git. Cada entrada no stash representa um 	conjunto de alterações que você salvou temporariamente. Esse comando ajuda a ver quais alterações você armazenou e 	quando.
+
+	git stash apply ou git stash apply stash@{escolha um número} -> É usado para reaplicar as alterações armazenadas 	no stash ao seu diretório de trabalho. Ele pega as mudanças temporárias que foram salvas com git stash e as 	coloca de volta, permitindo que você continue a trabalhar nelas.
+
+	git stash push -m "mensagem" -> É usado para salvar mudanças temporárias no stash do Git, mas com a adição de uma 	mensagem descritiva. Isso ajuda a identificar rapidamente o que foi salvo no stash.
+
+	git stash drop ou git stash drop stash@{escolha um número}-> é usado para remover uma entrada específica do stash. 	Isso libera o 	espaço ocupado por essa entrada, garantindo que não há mudanças temporárias indesejadas ou 	obsoletas ocupando o stash.
+
+	git stash pop stash@{0} -> aplica as mudanças salvas na entrada de stash stash@{0} ao seu diretório de trabalho e, 	em seguida, remove essa entrada do stash. Isso é útil quando você quer reaplicar as mudanças temporárias e limpá-	las do stash ao mesmo tempo.
+
+	git stash clear -> é usado para limpar completamente o stash no Git, removendo todas as entradas salvas. É útil 	quando você quer começar do zero e não precisa mais de nenhuma das mudanças temporárias armazenadas.
+
+
+git reflog -> É uma ferramenta poderosa que permite ver um registro dos movimentos de referência no repositório. Ele lista todas as alterações feitas no ponteiro HEAD (ou em outras referências), incluindo commits, checkouts, resets, merges, e outros comandos que alteram a história do Git.
+	
+	git reflog + git reset --hard ID commit: Restaura o commit apagado.
+	
+	git reflog + git checkout ID commit + git checkout -b "nome da branch": Restaura uma branch.
+
+
+git merge -> É utilizado para combinar mudanças de diferentes branches em uma única branch. Ele integra o histórico de commits de duas branches, permitindo que você una o trabalho de vários desenvolvedores ou de diferentes funcionalidades.
+
+	git merge --squash -> É usado para combinar mudanças de uma branch específica em sua branch atual, mas sem criar 	um commit de merge. Em vez disso, ele prepara todas as mudanças como um único commit na sua área de staging, 	deixando você fazer o commit manualmente.
+
+	git merge --no-ff -> Força o Git a criar um commit de merge mesmo se a branch de destino puder ser avançada 	diretamente para a branch de origem. Isso é útil para manter um histórico mais explícito e fácil de entender sobre 	quando e como as branches foram integradas.
+	
+	git merge -m "mensagem"
+
+git rebase -> É usado para re-aplicar commits de uma branch em cima de outra. Ele é útil para manter um histórico de commits limpo e linear. Pega os commits da sua branch e os aplica em cima da main, como se fossem novos commits. 
+
+
+git checkout -> É usado para navegar entre branches ou commits no repositório Git. Ele permite alternar o seu diretório de trabalho para uma branch específica ou um estado específico de commit.
+
+	git checkout -b -> É usado para criar uma nova branch e mudar para ela em um único passo. Isso simplifica o 	processo de criar e alternar entre branches.
+
+
+git switch -> É uma alternativa moderna ao git checkout para alternar entre branches. Foi introduzido para tornar as operações de switch de branches mais intuitivas e específicas. Ele é mais fácil de entender e usar, especialmente para novos usuários do Git.
+
+	git switch -c -> É usado para criar uma nova branch e alternar para ela em um único passo. 
+
+
+git fetch -> É utilizado para atualizar o repositório local com as últimas mudanças do repositório remoto, sem fazer merge automático dessas mudanças na sua branch atual. Ele é essencial para manter seu repositório local sincronizado com o remoto.
+
+git pull -> É usado para buscar e integrar (merge) as mudanças do repositório remoto à sua branch atual em um único passo. Ele é uma combinação dos comandos git fetch e git merge.
+
+git push -> É usado para enviar commits locais de uma branch para o repositório remoto. Ele atualiza o repositório remoto com as mudanças feitas no repositório local.
+
